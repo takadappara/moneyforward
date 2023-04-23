@@ -10,10 +10,11 @@ start_month=$(echo "$1" | cut -d '/' -f 2)  # 開始月を取得
 end_year=$(echo "$2" | cut -d '/' -f 1)  # 終了年を取得
 end_month=$(echo "$2" | cut -d '/' -f 2)  # 終了月を取得
 
-while [ $start_year -lt $end_year ] || [ $start_month -le $end_month ]; do
+while [ $start_year -lt $end_year ] || ([ $start_year -eq $end_year ] && [ $start_month -le $end_month ]); do
   printf "%04d/%02d\n" $start_year $start_month  # 年月を表示
   # Chromeでcsvファイルをダウンロード
   open -a "Google Chrome" https://moneyforward.com/cf/csv?from=$start_year/$start_month/01&month=1&year=$start_year
+  sleep 1
 
   if [ $start_month -eq 12 ]; then
     start_month=1
@@ -22,4 +23,3 @@ while [ $start_year -lt $end_year ] || [ $start_month -le $end_month ]; do
     start_month=$(($start_month + 1))
   fi
 done
-
