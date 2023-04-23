@@ -1,7 +1,7 @@
 # MoneyForward ME
 ## CSVファイルのダウンロード
 
-ブラウザ Chrome で MoneyForward ME にログインした状態で、下記のようにスクリプトを実行する。
+ブラウザ Chrome で MoneyForward ME にログインした状態で、下記のようにスクリプトを実行する。  
 （動作確認は、MacBook Air (M1, 2020)のみでしか確認していません。）
 
 1. Chrome で MoneyForward ME にログインする。  
