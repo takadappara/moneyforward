@@ -1,7 +1,11 @@
 #!/bin/bash
 
+# Chrome ダウンロードファイルの保存場所
+CHROME_DOWNLOAD_DIR=~/Downloads
+
 if [ $# -ne 2 ]; then
   echo "usage: $0 <start_year_month> <end_year_month>"
+  echo "   ex) $0 2023/01 2024/01"
   exit 1
 fi
 
@@ -23,3 +27,15 @@ while [ $start_year -lt $end_year ] || ([ $start_year -eq $end_year ] && [ $star
     start_month=$(($start_month + 1))
   fi
 done
+
+# ダウンロード待ち
+sleep 5
+
+# downloadディレクトリが存在しない場合に作成
+if [ ! -d download ]; then
+    mkdir -p download
+fi
+
+# ダウンロードしたファイルをdownloadディレクトリに移動
+mv $CHROME_DOWNLOAD_DIR/収入・支出詳細_*.csv ./download/
+echo "Done."
